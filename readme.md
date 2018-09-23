@@ -6,6 +6,9 @@ You are reading a configuration file, or other data file and the
 content of that file would benifit from being able to reference
 variables like ${FOO} or ${BAR} and have those magic strings transform
 
+Or for example your file supports/requires an "if" like statement
+and you need to evaluate expressions that include macro values.
+
 ## Examples Simple text
 
 Given a simple list of macros and values, such as:
@@ -19,7 +22,7 @@ Do simple text transformations like:
 
 ## Examples - Numerical Expressions
 
-Given tehse macros:
+Given these macros:
 * `one = 1`
 * `two = (${one} + ${one})`
 * `four = (${two} * ${two})`
