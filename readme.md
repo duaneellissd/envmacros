@@ -1,5 +1,13 @@
 # Simple shell script macro resolution.
 
+## Where this is useful
+
+You are reading a configuration file, or other data file and the
+content of that file would benifit from being able to reference
+variables like ${FOO} or ${BAR} and have those magic strings transform
+
+## Examples Simple text
+
 Given a simple list of macros and values, such as:
 
 * `child=Zack`
@@ -9,16 +17,16 @@ Do simple text transformations like:
 * Hello `${child}` -> Zack
 * Hello `${parent_${chiid}}` -> Duane
 
-* In addition, Numerical evaluation can occur.
+## Examples - Numerical Expressions
+
+Given tehse macros:
 * `one = 1`
 * `two = (${one} + ${one})`
 * `four = (${two} * ${two})`
-* All basic Python basic and advanced operations are supported
-* `this_is_true = ((0x0080 & (${one}<<(2*${four}))) != 0) == True`
 
-You are reading a configuration, or other data file and the
-content of that file would benifit from being able to reference
-variables like ${FOO} or ${BAR} and have those magic strings transform
+All basic Python basic and advanced operations are supported
+* `this_is_true = ((0x0100 & (${one}<<(2*${four}))) != 0) == True`
+
 
 ## To install from git hub:
 
