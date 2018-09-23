@@ -40,7 +40,7 @@ Or, download a zip file
 bash$ pip install envmacros.zip
 ```
 
-# Example usage:(macros)
+## Example usage:(macros)
 
 ```python
 import envmacros
@@ -58,7 +58,7 @@ resolver.lookup.add("parent_Zack", "Duane")
 result = resolver.resolve( "The ${child}")
 print( result.result )
    
-# example of an error
+## example of an error
 result = resolver.resolve( "The ${CHiLD}")
 if result.err_msg != None:
     print("Error message: " + result.err_msg )
@@ -67,7 +67,7 @@ if result.err_msg != None:
         print( this_step )
 ```
 
-# Example Usage, Expressions
+## Example Usage, Expressions
 
 ```python
 import envmacros
@@ -92,12 +92,12 @@ for s in result.steps:
 ```
 
 
-# Changes
+## Changes
 
 * 1.0 - Initial release, expressions
 * 2.0 - Add simple arithmatic expressions, Rename: MacroDictionary() ->MacroLookup()
 
-# Future:
+## Future:
  
 Macros like  
 
