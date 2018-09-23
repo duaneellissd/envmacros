@@ -1,0 +1,2 @@
+# The "frozenclass"
+git+https://github.com/duaneellissd/frozenclass.git
