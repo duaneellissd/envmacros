@@ -2,7 +2,7 @@
 from setuptools import setup
 
 setup( name='envmacros',
-       version='2.0',
+       version='2.1',
        description='A simple module that supports Environment like macros.',
        long_description='Simple macro transformations like: ${parent_${child}} -> ${parent_Zack} -> Duane, including expressions',
        url='http://github.com/duaneellissd/envmacros',

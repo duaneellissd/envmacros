@@ -1,0 +1,8 @@
+#
+#
+# comments
+
+# blank above
+myvar = SomeValue
+
+othervar = ThisValue

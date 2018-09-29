@@ -1,0 +1,6 @@
+#
+#
+# comments
+
+# syntax error is something that does not match our regex
+asdfasd a v av e 

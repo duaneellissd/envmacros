@@ -95,10 +95,27 @@ for s in result.steps:
 ```
 
 
+## Reading macros from a simple text file
+
+```
+imprt os
+import envmacros
+
+fn = "somefilename.txt"
+
+# use the pseudo global macros        
+lookup = envmacros.MacroLookup()
+
+# Read var file
+#    Simple: blank & comments(#) are ignored
+#    otherwise file consists of: NAME=<value>
+envmacros.read_text_varfile( fn, lookup )
+```
 ## Changes
 
 * 1.0 - Initial release, expressions
 * 2.0 - Add simple arithmatic expressions, Rename: MacroDictionary() ->MacroLookup()
+* 2.1 - Add simple text varfile
 
 ## Future:
  

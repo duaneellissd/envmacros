@@ -1,6 +1,7 @@
 from unittest import TestCase
 import sys
 import envmacros
+import os
 
 # change this to debug things
 VERBOSE=False
@@ -264,3 +265,48 @@ class MyTest( TestCase ):
     def test_257(self):
         # Like: C's (!!x)
         self.eval_good( 1,   "not not 7")
+
+        
+
+    def test_300_parse_bad_lookup(self):
+        class Foo():
+            pass
+        with self.assertRaises( Exception ):
+            envmacros.read_text_varfile( "asfa12357VDE_does_not_eixst", Foo() )
+
+    def test_310_nofile( self ):
+        lookup = envmacros.MacroLookup()
+        
+        with self.assertRaises(FileNotFoundError):
+            envmacros.read_text_varfile( "asfa12357VDE_does_not_eixst", lookup )
+    
+    def test_320_good_file( self ):
+        fn = os.path.join( os.path.dirname( __file__ ), 'test_var_file_good.txt' )
+        
+        lookup = envmacros.MacroLookup()
+        envmacros.read_text_varfile( fn, lookup )
+        # We should find a few vars
+        
+        r = envmacros.MacroResult()
+        tmp = lookup.lookup(  r, 'NOT_FOUND_myvar1' )
+        self.assertTrue( tmp == None )
+        tmp = lookup.lookup(  r, 'myvar' )
+        self.assertTrue( tmp != None )
+        self.assertEqual( tmp , "SomeValue" )
+        tmp = lookup.lookup( r, 'othervar' )
+        self.assertEqual( tmp, 'ThisValue' )
+        
+    def test_330_syntax( self ):
+        fn = os.path.join( os.path.dirname( __file__ ), 'test_var_file_syntax.txt' )
+        
+        lookup = envmacros.MacroLookup()
+        with self.assertRaises( envmacros.MacroSyntax ):
+            envmacros.read_text_varfile( fn, lookup )
+
+        
+    def test_340_dup( self ):
+        fn = os.path.join( os.path.dirname( __file__ ), 'test_var_file_dup.txt' )
+        
+        lookup = envmacros.MacroLookup()
+        with self.assertRaises( envmacros.MacroDuplicate ):
+            envmacros.read_text_varfile( fn, lookup )

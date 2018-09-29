@@ -1,0 +1,13 @@
+#
+#
+# comments
+
+# syntax error is something that does not match our regex
+
+cat = Garfield
+
+Monkey = Sun Wukong
+
+dog = Dolly
+
+cat = Dogs are better

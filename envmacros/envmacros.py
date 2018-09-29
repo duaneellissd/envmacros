@@ -66,6 +66,12 @@ class MacroLookup( object ):
         assert( isinstance( value, str ) )
         self.entries[name] = (value, where)
 
+    def list( self ):
+        for n, v in self.entries.items():
+            print("%s -> %s" % (n,v[0]) )
+            if v[1]:
+                print("%s -> where: %s" % (n,v[1]) )
+            
     def lookup( self, result, name ):
         """
         Return the text (or none) for macro 'name'.
@@ -73,6 +79,7 @@ class MacroLookup( object ):
 
         value = None
         where = None
+        result.where = None
         
         # is it in our dictonary?
         tuple_ = self.entries.get( name, None )
@@ -102,6 +109,7 @@ class MacroLookup( object ):
             result.err_msg = "Undefined: %s" % name
             return None
         
+        result.where = where
         if where != None:
             result.add_step("%s: %s -> %s" % (where, name, value))
         else:
@@ -139,6 +147,7 @@ class MacroResult(object):
         self.err_msg = None
         self.result = None
         self.steps = []
+        self.where = None
 
     def add_step( self, txt ):
         self.steps.append( txt )
