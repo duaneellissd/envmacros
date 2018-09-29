@@ -15,7 +15,7 @@ Given a simple list of macros and values, such as:
 
 * `child=Zack`
 * `parent_Zack=Duane`
-	
+    
 Do simple text transformations like:  
 * Hello `${child}` -> Zack
 * Hello `${parent_${chiid}}` -> Duane
@@ -131,4 +131,4 @@ other standard (or custom) python functions.
 
 It's not that hard ... did it before in a previous life 
 and this feature was very handy..
-	
+    
